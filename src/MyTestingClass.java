@@ -5,10 +5,13 @@ public class MyTestingClass {
     }
     @Override
     public int hashCode(){
-        int hash=0;
+        int hash=1;
+        if(name==null){
+            return -1;
+        }
         char[] array=name.toCharArray();
         for(int i=0;i< array.length;i++){
-            hash+=(int)array[i];
+            hash=31*hash+(int)array[i];
         }
         return hash;
     }
