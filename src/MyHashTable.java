@@ -24,7 +24,7 @@ public class MyHashTable<K,V> {
         this.size=0;
     }
     public int hash(K key){
-        return key.hashCode()%this.M;
+        return Math.abs(key.hashCode()%this.M);
     }
     public void put(K key, V value){
         int i=hash(key);
@@ -101,5 +101,28 @@ public class MyHashTable<K,V> {
             }
         }
         return null;
+    }
+    public void printBuckets(){
+        for(int i=0;i<this.M;i++){
+            HashNode<K,V> cursor=this.chainArray[i];
+            while(cursor!=null){
+                System.out.print(cursor.toString());
+                cursor=cursor.next;
+            }
+            System.out.println();
+        }
+    }
+    public int[] sizeOfBuckets(){
+        int[] arr=new int[this.M];
+        for(int i=0;i<this.M;i++){
+            int len=0;
+            HashNode<K,V> cursor=this.chainArray[i];
+            while(cursor!=null){
+                len++;
+                cursor=cursor.next;
+            }
+            arr[i]=len;
+        }
+        return arr;
     }
 }

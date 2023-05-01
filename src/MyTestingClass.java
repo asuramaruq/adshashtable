@@ -11,7 +11,7 @@ public class MyTestingClass {
         }
         char[] array=name.toCharArray();
         for(int i=0;i< array.length;i++){
-            hash=31*hash+(int)array[i];
+            hash=21*hash+(int)array[i];
         }
         return hash;
     }
